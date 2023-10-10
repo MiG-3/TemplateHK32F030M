@@ -1,0 +1,1 @@
+HK32f030m Template for Embrdded CDT with C++ Wrapper
