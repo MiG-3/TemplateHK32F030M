@@ -8,6 +8,7 @@
 
 #include "SimplePwmTimer.hpp"
 #include <Libs/Utils/DebugAssert.h>
+#include <hk32f030m_rcc.h>
 
 namespace Drivers::Timer {
 
@@ -62,6 +63,10 @@ namespace Drivers::Timer {
         DEBUG_STOP;
         return false;
     }
+    if(_device == Device::Timer1) {
+      TIM_CtrlPWMOutputs( regs(), ENABLE );
+    }
+
     return true;
   }
 
@@ -90,24 +95,19 @@ namespace Drivers::Timer {
     RCC_ClocksTypeDef clocks{};
     RCC_GetClocksFreq(&clocks);
     auto pclkTimFreq = clocks.PCLK_Frequency * ( clocks.PCLK_Frequency == clocks.HCLK_Frequency ? 1 : 2);
-    uint32_t rccTim {};
     switch(_device) {
-      case Device::Timer2:
-        rccTim = RCC_APB1Periph_TIM2;
+      case Device::Timer1:
+        RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);
         break;
-      case Device::Timer6:
-        rccTim = RCC_APB1Periph_TIM6;
+      case Device::Timer2:
+        RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
         break;
       default:
         DEBUG_STOP;
         return 0;
     }
-    RCC_APB1PeriphClockCmd(rccTim, ENABLE);
     return pclkTimFreq;
   }
-
-
-
 
 } //Drivers::Timer
 
