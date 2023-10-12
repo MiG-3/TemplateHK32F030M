@@ -5,6 +5,7 @@
  *      Author: SpitsynAV
  */
 #include "UartDriver.hpp"
+#include <hk32f030m_rcc.h>
 
 namespace Drivers::Uart {
 

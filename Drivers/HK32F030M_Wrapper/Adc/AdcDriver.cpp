@@ -6,8 +6,8 @@
  */
 
 #include "AdcDriver.hpp"
-
 #include "../Timer/HalTimer.hpp"
+#include <hk32f030m_misc.h>
 
 namespace Drivers::Adc {
 

@@ -66,7 +66,6 @@ namespace Drivers::Timer {
     if(_device == Device::Timer1) {
       TIM_CtrlPWMOutputs( regs(), ENABLE );
     }
-
     return true;
   }
 

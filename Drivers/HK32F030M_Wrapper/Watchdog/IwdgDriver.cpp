@@ -8,6 +8,7 @@
 
 #include "IwdgDriver.hpp"
 #include <Libs/Utils/DebugAssert.h>
+#include <hk32f030m_rcc.h>
 
 namespace Drivers::Watchdog {
 

@@ -11,7 +11,9 @@
 #include "AdcParams.hpp"
 #include "../Gpio/Gpio.hpp"
 #include "../IrqPriority.hpp"
+#include <hk32f030m_rcc.h>
 #include <Libs/Containers/array_mapping.hpp>
+#include <Libs/Utils/DebugAssert.h>
 #include <array>
 
 namespace Drivers::Adc {
